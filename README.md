@@ -1,3 +1,4 @@
+![Bridgiron Banner](images/Banner02.png)
 # Bridgiron
 
 A Windows tool that minimizes copy-paste effort between ChatGPT and Claude Code.
