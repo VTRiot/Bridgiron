@@ -1,5 +1,5 @@
 # Bridgiron
-
+長時間にわたる 仕様設計 → 実装 のループを、ChatGPTとClaude Codeの間でトークン制限を意識しながら回している開発者向けに設計されたツールです。
 ChatGPT と Claude Code 間のコピペ作業を最小労力化するツール
 
 [English README](README.md)
