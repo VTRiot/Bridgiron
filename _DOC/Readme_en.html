@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgiron - User Guide</title>
+    <style>
+        :root {
+            --primary-color: #10a37f;
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --border-color: #404040;
+            --code-bg: #2d2d2d;
+            --link-color: #4a9eff;
+            --section-bg: #2d2d2d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+        h2 {
+            color: var(--heading-color);
+            font-size: 20px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        h3 {
+            color: var(--heading-color);
+            font-size: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        p {
+            margin-bottom: 16px;
+        }
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 14px;
+            color: #d4d4d4;
+        }
+        pre {
+            background: #252526;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .section {
+            background: var(--section-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .button-desc {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: #3c3c3c;
+            border-radius: 8px;
+        }
+        .button-name {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-right: 16px;
+        }
+        .button-text {
+            flex: 1;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 16px;
+        }
+        .step-number {
+            background: var(--primary-color);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+        .warning {
+            background: #3d3522;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+            color: #ffc107;
+        }
+        .info {
+            background: #1e3a4c;
+            border-left: 4px solid #17a2b8;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+            color: #87ceeb;
+        }
+        footer {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="../images/Banner02.png" alt="Bridgiron Banner" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div style="text-align: right; margin-bottom: 16px;">
+        <a href="Readme.html">日本語</a>
+        <span style="color: #666;"> | </span>
+        <span style="color: var(--primary-color); font-weight: bold;">English</span>
+    </div>
+
+    <h1>Bridgiron</h1>
+    <p class="subtitle">ChatGPT ↔ Claude Code Bridge Tool</p>
+
+    <div class="section">
+        <h2>What is Bridgiron?</h2>
+        <p>
+            Bridgiron streamlines copy-paste operations between ChatGPT and Claude Code.
+            It allows you to copy prompts (instructions for Claude Code) output by ChatGPT to your clipboard with a single click.
+        </p>
+        <p>
+            <strong>Key Features:</strong>
+        </p>
+        <ul>
+            <li>Automatically extracts prompt sections from ChatGPT responses</li>
+            <li>One-click copy via bookmarklet</li>
+            <li>Reliable prompt identification using SOP/EOP markers</li>
+        </ul>
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="Bridgiron_Girl.png" alt="Bridgiron - AI Bridge Tool" style="max-width: 100%; height: auto; border-radius: 8px;">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Initial Setup</h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Launch the GUI Tool</strong><br>
+                Double-click <code>Bridgiron.exe</code> to launch.
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Set Custom Instructions in ChatGPT</strong><br>
+                Click "Copy Custom Instructions", open ChatGPT settings, and paste it into the Custom Instructions field.
+                <p class="info" style="margin-top:8px;">
+                    The location of the settings may vary depending on the ChatGPT version.
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Register the Bookmarklet</strong><br>
+                <ol>
+                    <li>Copy the title using "Copy Title" button</li>
+                    <li>Right-click Chrome's bookmark bar → "Add page..."</li>
+                    <li>Paste the title in the Name field</li>
+                    <li>Return to GUI and copy code using "Copy Code" button</li>
+                    <li>Paste the code in the URL field</li>
+                    <li>Click "Save"</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>Done!</strong><br>
+                Click the bookmark on the ChatGPT page to copy the prompt to your clipboard.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Button Descriptions</h2>
+
+        <h3>Bookmarklet Section</h3>
+
+        <div class="button-desc">
+            <span class="button-name">Copy Title</span>
+            <div class="button-text">
+                Copies the title to use for the bookmark name.
+                You can edit it in the input field.
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">Copy Code</span>
+            <div class="button-text">
+                Copies the JavaScript code for the bookmarklet.
+                Configuration file contents (keywords.txt, etc.) are embedded.
+            </div>
+        </div>
+
+        <h3>ChatGPT Settings Section</h3>
+
+        <div class="button-desc">
+            <span class="button-name">Copy Custom Instructions</span>
+            <div class="button-text">
+                Copies instructions to make ChatGPT output prompt markers (---SOP---/---EOP---).
+                Set this in ChatGPT's "Custom instructions".
+            </div>
+        </div>
+
+        <h3>Configuration Files Section</h3>
+
+        <div class="button-desc">
+            <span class="button-name">keywords.txt / phrases.txt / delimiters.txt</span>
+            <div class="button-text">
+                Opens each configuration file in the default text editor.
+                After editing, generate a new bookmarklet with "Copy Code".
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">settings.txt</span>
+            <div class="button-text">
+                Opens the GUI settings file. Contains language, project path, mini-window position, etc.
+            </div>
+        </div>
+
+        <h3>Help Section</h3>
+
+        <div class="button-desc">
+            <span class="button-name">View Guide</span>
+            <div class="button-text">
+                Opens this help page in your browser.
+            </div>
+        </div>
+
+        <h3>History Section</h3>
+
+        <div class="button-desc">
+            <span class="button-name" style="background: #ff69b4;">GPT→CC</span>
+            <div class="button-text">
+                Shows history of prompts copied from ChatGPT. Up to 50 entries are saved.
+                Click or use number keys (1-9) to select and copy to clipboard.
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name" style="background: #9370db;">CC→GPT</span>
+            <div class="button-text">
+                Shows history of Claude Code report copies. Up to 50 entries are saved.
+                Click or use number keys (1-9) to select and copy to clipboard.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Troubleshooting</h2>
+
+        <h3>"Prompt not found" message appears</h3>
+        <ul>
+            <li>Verify that ChatGPT's custom instructions are set correctly</li>
+            <li>Check if ChatGPT's response contains <code>---SOP---</code> and <code>---EOP---</code></li>
+            <li>For older conversations without markers, legacy pattern matching is used (yellow notification)</li>
+        </ul>
+
+        <h3>Nothing happens when clicking the bookmark</h3>
+        <ul>
+            <li>Verify you're on the ChatGPT page (chatgpt.com or chat.openai.com)</li>
+            <li>Check that the bookmark URL starts with <code>javascript:</code></li>
+            <li>Try copying and registering the code again</li>
+        </ul>
+
+        <h3>Changes to configuration files aren't reflected in bookmarklet</h3>
+        <div class="warning">
+            After editing configuration files, you need to generate new code with "Copy Code" and update the bookmark.
+        </div>
+
+        <h3>About Notification Colors</h3>
+        <ul>
+            <li><strong style="color:#10a37f;">Green:</strong> Prompt extracted using SOP/EOP markers (recommended)</li>
+            <li><strong style="color:#f59e0b;">Yellow:</strong> Prompt extracted using legacy pattern matching</li>
+            <li><strong style="color:#ef4444;">Red:</strong> Failed to extract prompt</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+            <li><code>Alt+C</code> - Copy CC Report</li>
+            <li><code>1-9</code> - Select item in history window</li>
+            <li><code>Esc</code> - Close history window</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>File Structure</h2>
+        <pre><code>[Installation Directory]
+C:\Program Files (x86)\Bridgiron\
+├── Bridgiron.exe         # GUI tool (executable)
+├── _Config\              # Initial config files (reference)
+├── _DOC\
+│   └── Readme.html       # This file
+└── images\
+    └── ...               # Icons & banner images
+
+[Configuration Files (AppData)]
+%APPDATA%\Bridgiron\
+├── settings.txt          # GUI settings
+├── keywords.txt          # Prompt start keywords
+├── phrases.txt           # Prompt start phrases
+└── delimiters.txt        # Delimiters</code></pre>
+        <p class="info">
+            Configuration files are stored in each user's AppData folder.<br>
+            Type <code>%APPDATA%\Bridgiron</code> in Explorer's address bar to open it.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Version Information</h2>
+        <ul>
+            <li><strong>Bridgiron v1.1</strong></li>
+            <li>Release: 2026-01-31</li>
+            <li>Key features: Prompt extraction bookmarklet, SOP/EOP marker support, CC report copy, mini-window mode, copy history feature</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Change Log</h2>
+
+        <h3>v1.1 (2026-01-31)</h3>
+        <ul>
+            <li>Added copy history feature (GPT→CC / CC→GPT, 50 entries each)</li>
+            <li>History window (Win+V style UI, number key selection, individual delete)</li>
+            <li>Mini window mode improvements (CLI tracking, Z-order control)</li>
+            <li>Added "one pair per response" rule to custom instructions</li>
+            <li>Added English Readme</li>
+            <li>Added illustration</li>
+        </ul>
+
+        <h3>v1.0 (2026-01-29)</h3>
+        <ul>
+            <li>Initial release</li>
+            <li>Prompt extraction bookmarklet</li>
+            <li>SOP/EOP marker support</li>
+            <li>CC report copy feature</li>
+            <li>Mini window mode</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Bridgiron - ChatGPT ↔ Claude Code Bridge Tool</p>
+        <p>&copy; 2026</p>
+    </footer>
+</body>
+</html>

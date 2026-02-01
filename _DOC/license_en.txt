@@ -1,0 +1,22 @@
+Bridgiron Terms of Use
+
+Please read the following terms of use carefully before using the software "Bridgiron" (hereinafter referred to as "the Software"). By installing or using the Software, you agree to be bound by these terms.
+
+1. Disclaimer
+The Software is provided "as is" without warranty of any kind. The author shall not be liable for any damages (including but not limited to loss of data, business interruption, or other monetary damages) arising from the use or inability to use the Software. Use of the Software is entirely at your own risk.
+
+2. No Warranty
+The operation of the Software is not fully guaranteed. Bugs and defects may exist.
+
+3. Updates
+Updates and support for the Software are not guaranteed. The author may discontinue development at any time without notice.
+
+4. Future Sales
+The author reserves the right to sell the Software or its derivatives in the future.
+
+5. Modification and Redistribution
+Those who wish to modify or redistribute the Software are welcome. Source code can be provided upon request. Please contact us via GitHub Issues.
+
+6. Contact
+For questions or requests, please contact us at GitHub Issues:
+https://github.com/VTRiot/Bridgiron/issues

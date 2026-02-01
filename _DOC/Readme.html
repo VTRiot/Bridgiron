@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgiron - 使い方ガイド</title>
+    <style>
+        :root {
+            --primary-color: #10a37f;
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --border-color: #404040;
+            --code-bg: #2d2d2d;
+            --link-color: #4a9eff;
+            --section-bg: #2d2d2d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .lang-notice {
+            background: #3d3522;
+            border: 1px solid #6b5a2e;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #ffc107;
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+        h2 {
+            color: var(--heading-color);
+            font-size: 20px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        h3 {
+            color: var(--heading-color);
+            font-size: 16px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        p {
+            margin-bottom: 16px;
+        }
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 14px;
+            color: #d4d4d4;
+        }
+        pre {
+            background: #252526;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .section {
+            background: var(--section-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .button-desc {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: #3c3c3c;
+            border-radius: 8px;
+        }
+        .button-name {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-right: 16px;
+        }
+        .button-text {
+            flex: 1;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 16px;
+        }
+        .step-number {
+            background: var(--primary-color);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+            padding-top: 2px;
+        }
+        .warning {
+            background: #3d3522;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+            color: #ffc107;
+        }
+        .info {
+            background: #1e3a4c;
+            border-left: 4px solid #17a2b8;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+            color: #87ceeb;
+        }
+        footer {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="../images/Banner02.png" alt="Bridgiron Banner" style="max-width: 100%; height: auto;">
+    </div>
+
+    <div style="text-align: right; margin-bottom: 16px;">
+        <span style="color: var(--primary-color); font-weight: bold;">日本語</span>
+        <span style="color: #666;"> | </span>
+        <a href="Readme_en.html">English</a>
+    </div>
+
+    <h1>Bridgiron</h1>
+    <p class="subtitle">ChatGPT ↔ Claude Code ブリッジツール</p>
+
+    <div class="section">
+        <h2>Bridgironとは</h2>
+        <p>
+            BridgironはChatGPTとClaude Code間のコピー作業を効率化するツールです。
+            ChatGPTが出力するプロンプト（Claude Code用の指示）を、ワンクリックでクリップボードにコピーできます。
+        </p>
+        <p>
+            <strong>主な機能:</strong>
+        </p>
+        <ul>
+            <li>ChatGPTの応答からプロンプト部分を自動抽出</li>
+            <li>ブックマークレットによるワンクリックコピー</li>
+            <li>SOP/EOPマーカーによる確実なプロンプト識別</li>
+        </ul>
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="Bridgiron_Girl.png" alt="Bridgiron - AIブリッジツールのイメージ" style="max-width: 100%; height: auto; border-radius: 8px;">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>初回セットアップ手順</h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>GUIツールを起動</strong><br>
+                <code>Bridgiron.exe</code> をダブルクリックして起動してください。
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>ChatGPTにカスタム指示を設定</strong><br>
+                「カスタム指示文をコピー」ボタンをクリックし、ChatGPTの設定画面を開いて、カスタム指示（Custom Instructions）の欄に貼り付けてください。
+                <p class="info" style="margin-top:8px;">
+                    設定画面の場所はChatGPTのバージョンにより異なる場合があります。
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>ブックマークレットを登録</strong><br>
+                <ol>
+                    <li>「タイトルをコピー」ボタンでタイトルをコピー</li>
+                    <li>Chromeのブックマークバーを右クリック → 「ページを追加...」</li>
+                    <li>名前にタイトルをペースト</li>
+                    <li>GUIに戻り「コードをコピー」ボタンでコードをコピー</li>
+                    <li>URLにコードをペースト</li>
+                    <li>「保存」をクリック</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>完了!</strong><br>
+                ChatGPTのページでブックマークをクリックすると、プロンプトがクリップボードにコピーされます。
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>各ボタンの説明</h2>
+
+        <h3>ブックマークレット セクション</h3>
+
+        <div class="button-desc">
+            <span class="button-name">タイトルをコピー</span>
+            <div class="button-text">
+                ブックマークの名前に使うタイトルをコピーします。
+                入力欄で自由に変更できます。
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">コードをコピー</span>
+            <div class="button-text">
+                ブックマークレット用のJavaScriptコードをコピーします。
+                設定ファイル（keywords.txt等）の内容が埋め込まれます。
+            </div>
+        </div>
+
+        <h3>ChatGPT設定 セクション</h3>
+
+        <div class="button-desc">
+            <span class="button-name">カスタム指示文をコピー</span>
+            <div class="button-text">
+                ChatGPTにプロンプトのマーカー（---SOP---/---EOP---）を出力させるための指示文をコピーします。
+                ChatGPTの「Custom instructions」に設定してください。
+            </div>
+        </div>
+
+        <h3>設定ファイル編集 セクション</h3>
+
+        <div class="button-desc">
+            <span class="button-name">keywords.txt / phrases.txt / delimiters.txt</span>
+            <div class="button-text">
+                各設定ファイルをデフォルトのテキストエディタで開きます。
+                編集後、「コードをコピー」で新しいブックマークレットを生成してください。
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">settings.txt</span>
+            <div class="button-text">
+                GUIの設定ファイルを開きます。言語、プロジェクトパス、ミニウィンドウ位置などが保存されています。
+            </div>
+        </div>
+
+        <h3>ヘルプ セクション</h3>
+
+        <div class="button-desc">
+            <span class="button-name">使い方を見る</span>
+            <div class="button-text">
+                このヘルプページをブラウザで開きます。
+            </div>
+        </div>
+
+        <h3>履歴 セクション</h3>
+
+        <div class="button-desc">
+            <span class="button-name" style="background: #ff69b4;">GPT→CC</span>
+            <div class="button-text">
+                ChatGPTからコピーしたプロンプトの履歴を表示します。最大50件保存されます。
+                クリックまたは数字キー（1-9）で選択してクリップボードにコピーできます。
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name" style="background: #9370db;">CC→GPT</span>
+            <div class="button-text">
+                Claude Codeの報告コピー履歴を表示します。最大50件保存されます。
+                クリックまたは数字キー（1-9）で選択してクリップボードにコピーできます。
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>トラブルシューティング</h2>
+
+        <h3>「プロンプトが見つかりませんでした」と表示される</h3>
+        <ul>
+            <li>ChatGPTのカスタム指示が正しく設定されているか確認してください</li>
+            <li>ChatGPTの応答に <code>---SOP---</code> と <code>---EOP---</code> が含まれているか確認してください</li>
+            <li>マーカーがない古い会話の場合、従来のパターンマッチングが使われます（黄色通知）</li>
+        </ul>
+
+        <h3>ブックマークをクリックしても何も起きない</h3>
+        <ul>
+            <li>ChatGPTのページ（chatgpt.com または chat.openai.com）で実行しているか確認してください</li>
+            <li>ブックマークのURLが <code>javascript:</code> で始まっているか確認してください</li>
+            <li>コードをもう一度コピーし直して登録してみてください</li>
+        </ul>
+
+        <h3>設定ファイルを編集してもブックマークレットに反映されない</h3>
+        <div class="warning">
+            設定ファイルを編集した後は、GUIの「コードをコピー」で新しいコードを生成し、
+            ブックマークを更新する必要があります。
+        </div>
+
+        <h3>通知の色について</h3>
+        <ul>
+            <li><strong style="color:#10a37f;">緑色:</strong> SOP/EOPマーカーでプロンプトを抽出しました（推奨）</li>
+            <li><strong style="color:#f59e0b;">黄色:</strong> 従来のパターンマッチングでプロンプトを抽出しました</li>
+            <li><strong style="color:#ef4444;">赤色:</strong> プロンプトの抽出に失敗しました</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>キーボードショートカット</h2>
+        <ul>
+            <li><code>Alt+C</code> - CC報告をコピー</li>
+            <li><code>1-9</code> - 履歴ウィンドウで項目を選択</li>
+            <li><code>Esc</code> - 履歴ウィンドウを閉じる</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>ファイル構成</h2>
+        <pre><code>【インストール先】
+C:\Program Files (x86)\Bridgiron\
+├── Bridgiron.exe         # GUIツール（実行ファイル）
+├── _Config\              # 初期設定ファイル（参照用）
+├── _DOC\
+│   └── Readme.html       # このファイル
+└── images\
+    └── ...               # アイコン・バナー画像
+
+【設定ファイル（AppData）】
+%APPDATA%\Bridgiron\
+├── settings.txt          # GUIの設定
+├── keywords.txt          # プロンプト開始キーワード
+├── phrases.txt           # プロンプト開始フレーズ
+└── delimiters.txt        # 区切り文字</code></pre>
+        <p class="info">
+            設定ファイルはユーザーごとの AppData フォルダに保存されます。<br>
+            エクスプローラーのアドレスバーに <code>%APPDATA%\Bridgiron</code> と入力すると開けます。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>バージョン情報</h2>
+        <ul>
+            <li><strong>Bridgiron v1.1</strong></li>
+            <li>リリース: 2026-01-31</li>
+            <li>主な機能: プロンプト抽出ブックマークレット、SOP/EOPマーカー対応、CC報告コピー、ミニウィンドウモード、コピー履歴機能</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>更新履歴</h2>
+
+        <h3>v1.1（2026-01-31）</h3>
+        <ul>
+            <li>コピー履歴機能を追加（GPT→CC / CC→GPT 各50件）</li>
+            <li>履歴ウィンドウ（Win+V風UI、数字キー選択、個別削除対応）</li>
+            <li>ミニウィンドウモードの改善（CLI追従、Z軸制御）</li>
+            <li>カスタム指示文に「1発言1ペア」ルールを追加</li>
+            <li>英語版Readme追加</li>
+            <li>挿絵追加</li>
+        </ul>
+
+        <h3>v1.0（2026-01-29）</h3>
+        <ul>
+            <li>初回リリース</li>
+            <li>プロンプト抽出ブックマークレット</li>
+            <li>SOP/EOPマーカー対応</li>
+            <li>CC報告コピー機能</li>
+            <li>ミニウィンドウモード</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Bridgiron - ChatGPT ↔ Claude Code Bridge Tool</p>
+        <p>&copy; 2026</p>
+    </footer>
+</body>
+</html>

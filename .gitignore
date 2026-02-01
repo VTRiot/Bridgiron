@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Build artifacts
+Bridgiron.exe
+build/
+dist/
+
+# Local shortcuts and scripts
+CCBridgiron.lnk
+_Go_Bridgiron_dev.bat
+*sync_to_public.bat
+
+# Claude Code
+.claude/
+CLAUDE.md
+_ForCC_Public/
+
+# Config (local settings)
+_Config/settings.txt
+_Config/analysis_result.txt
+
+# Temporary
+_DOC/Temp/
+
+# Not synced but just in case
+_DOC/_Archive/
+
+# Misc
+_Pic4CC/
