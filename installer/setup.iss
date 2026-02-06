@@ -2,7 +2,7 @@
 ; Inno Setup 6.x
 
 #define MyAppName "Bridgiron"
-#define MyAppVersion "1.13"
+#define MyAppVersion "1.15"
 #define MyAppPublisher "らいお"
 #define MyAppExeName "Bridgiron.exe"
 

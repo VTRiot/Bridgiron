@@ -213,6 +213,7 @@
             <li>ChatGPTの応答からプロンプト部分を自動抽出</li>
             <li>ブックマークレットによるワンクリックコピー</li>
             <li>SOP/EOPマーカーによる確実なプロンプト識別</li>
+            <li>CC報告コピー時にSOR/EORマーカーに対応（マーカー間の本文のみ抽出、マーカーがない場合は従来方式にフォールバック）</li>
         </ul>
         <div style="text-align: center; margin-top: 20px;">
             <img src="Bridgiron_Girl.png" alt="Bridgiron - AIブリッジツールのイメージ" style="max-width: 100%; height: auto; border-radius: 8px;">
@@ -244,6 +245,15 @@
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
+                <strong>CLAUDE.MD用ルールを設定</strong><br>
+                「CLAUDE.MD用ルールをコピー」ボタンをクリックし、コピーされた内容をプロジェクトの CLAUDE.MD に追記してください。
+                これにより Claude Code が SOR/EOR 形式で報告を出力するようになり、CC報告コピーの精度が向上します。
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
                 <strong>ブックマークレットを登録</strong><br>
                 <ol>
                     <li>「タイトルをコピー」ボタンでタイトルをコピー</li>
@@ -257,7 +267,7 @@
         </div>
 
         <div class="step">
-            <div class="step-number">4</div>
+            <div class="step-number">5</div>
             <div class="step-content">
                 <strong>完了!</strong><br>
                 ChatGPTのページでブックマークをクリックすると、プロンプトがクリップボードにコピーされます。
@@ -293,6 +303,14 @@
             <div class="button-text">
                 ChatGPTにプロンプトのマーカー（---SOP---/---EOP---）を出力させるための指示文をコピーします。
                 ChatGPTの「Custom instructions」に設定してください。
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">CLAUDE.MD用ルールをコピー</span>
+            <div class="button-text">
+                Claude Codeの CLAUDE.MD に追記するためのSOR/EORルールをコピーします。
+                Claude Codeが報告をSOR/EOR形式で出力するようになり、CC報告コピー時にマーカー間の本文のみを正確に抽出できます。
             </div>
         </div>
 
@@ -407,14 +425,20 @@ C:\Program Files (x86)\Bridgiron\
     <div class="section">
         <h2>バージョン情報</h2>
         <ul>
-            <li><strong>Bridgiron v1.1</strong></li>
-            <li>リリース: 2026-01-31</li>
-            <li>主な機能: プロンプト抽出ブックマークレット、SOP/EOPマーカー対応、CC報告コピー、ミニウィンドウモード、コピー履歴機能</li>
+            <li><strong>Bridgiron v1.15</strong></li>
+            <li>リリース: 2026-02-07</li>
+            <li>主な機能: プロンプト抽出ブックマークレット、SOP/EOPマーカー対応、CC報告コピー（SOR/EOR対応）、ミニウィンドウモード、コピー履歴機能、CLAUDE.MD用ルールコピー</li>
         </ul>
     </div>
 
     <div class="section">
         <h2>更新履歴</h2>
+
+        <h3>v1.15（2026-02-07）</h3>
+        <ul>
+            <li>CC報告コピー機能がSOR/EORマーカーに対応（マーカー間の本文を抽出、フォールバックあり）</li>
+            <li>「CLAUDE.MD用ルールをコピー」ボタンを追加</li>
+        </ul>
 
         <h3>v1.1（2026-01-31）</h3>
         <ul>

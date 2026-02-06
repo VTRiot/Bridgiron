@@ -204,6 +204,7 @@
             <li>Automatically extracts prompt sections from ChatGPT responses</li>
             <li>One-click copy via bookmarklet</li>
             <li>Reliable prompt identification using SOP/EOP markers</li>
+            <li>CC Report Copy supports SOR/EOR markers (extracts content between markers, falls back to latest message if no markers found)</li>
         </ul>
         <div style="text-align: center; margin-top: 20px;">
             <img src="Bridgiron_Girl.png" alt="Bridgiron - AI Bridge Tool" style="max-width: 100%; height: auto; border-radius: 8px;">
@@ -235,6 +236,15 @@
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
+                <strong>Set Up CLAUDE.MD Rules</strong><br>
+                Click "Copy CLAUDE.MD Rules" and paste the copied content into your project's CLAUDE.MD file.
+                This enables Claude Code to output reports in SOR/EOR format, improving CC report copy accuracy.
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
                 <strong>Register the Bookmarklet</strong><br>
                 <ol>
                     <li>Copy the title using "Copy Title" button</li>
@@ -248,7 +258,7 @@
         </div>
 
         <div class="step">
-            <div class="step-number">4</div>
+            <div class="step-number">5</div>
             <div class="step-content">
                 <strong>Done!</strong><br>
                 Click the bookmark on the ChatGPT page to copy the prompt to your clipboard.
@@ -284,6 +294,14 @@
             <div class="button-text">
                 Copies instructions to make ChatGPT output prompt markers (---SOP---/---EOP---).
                 Set this in ChatGPT's "Custom instructions".
+            </div>
+        </div>
+
+        <div class="button-desc">
+            <span class="button-name">Copy CLAUDE.MD Rules</span>
+            <div class="button-text">
+                Copies SOR/EOR rules to add to Claude Code's CLAUDE.MD file.
+                This makes Claude Code output reports in SOR/EOR format, enabling accurate extraction of report content when copying CC reports.
             </div>
         </div>
 
@@ -397,14 +415,20 @@ C:\Program Files (x86)\Bridgiron\
     <div class="section">
         <h2>Version Information</h2>
         <ul>
-            <li><strong>Bridgiron v1.1</strong></li>
-            <li>Release: 2026-01-31</li>
-            <li>Key features: Prompt extraction bookmarklet, SOP/EOP marker support, CC report copy, mini-window mode, copy history feature</li>
+            <li><strong>Bridgiron v1.15</strong></li>
+            <li>Release: 2026-02-07</li>
+            <li>Key features: Prompt extraction bookmarklet, SOP/EOP marker support, CC report copy (SOR/EOR support), mini-window mode, copy history feature, CLAUDE.MD rules copy</li>
         </ul>
     </div>
 
     <div class="section">
         <h2>Change Log</h2>
+
+        <h3>v1.15 (2026-02-07)</h3>
+        <ul>
+            <li>CC Report Copy now supports SOR/EOR markers (extracts content between markers, with fallback)</li>
+            <li>Added "Copy CLAUDE.MD Rules" button</li>
+        </ul>
 
         <h3>v1.1 (2026-01-31)</h3>
         <ul>

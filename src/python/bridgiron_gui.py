@@ -35,7 +35,7 @@ from history_popup import HistoryPopup
 # 定数
 # ========================================
 
-VERSION = "1.13"
+VERSION = "1.15"
 
 # プロジェクトルート（EXE実行時とスクリプト実行時で分岐）
 import sys
@@ -164,6 +164,21 @@ CUSTOM_INSTRUCTIONS = """Claude Codeに渡すプロンプトを出力する際�
 - プロンプトの直後に「---EOP---」を1行で記載
 - 1つの発言につき、SOP/EOPのペアは1つまでとする"""
 
+# CLAUDE.MD用 SOR/EORルール
+CLAUDEMD_SOR_EOR_RULE = """## 報告マーカールール（SOR/EOR）
+
+報告出力時は `---SOR---` と `---EOR---` で囲む。
+
+```
+---SOR---
+（報告本文）
+---EOR---
+```
+
+- `---EOR---` の後にテキストを出力しない
+- 次アクション指示がある場合は `---EOR---` の直前に含める
+- 割り込み（Background command等）があっても、SOR〜EORを分割しない"""
+
 # ========================================
 # ダークモード配色
 # ========================================
@@ -209,6 +224,7 @@ LANG = {
         "btn_copy_code": "コードをコピー",
         "section_chatgpt": "ChatGPT設定",
         "btn_copy_instructions": "カスタム指示文をコピー",
+        "btn_copy_claudemd_rule": "CLAUDE.MD用ルールをコピー",
         "section_config": "設定ファイル編集",
         "section_help": "ヘルプ",
         "btn_readme": "使い方を見る",
@@ -247,6 +263,7 @@ LANG = {
         "btn_copy_code": "Copy Code",
         "section_chatgpt": "ChatGPT Settings",
         "btn_copy_instructions": "Copy Custom Instructions",
+        "btn_copy_claudemd_rule": "Copy CLAUDE.MD Rule",
         "section_config": "Edit Config Files",
         "section_help": "Help",
         "btn_readme": "Open Readme",
@@ -640,10 +657,18 @@ class BridgironApp:
         self.ui_elements["section_chatgpt"] = section_gpt
         self.current_row += 1
 
-        self.btn_copy_instructions = ttk.Button(section_gpt, text=self.get_text("btn_copy_instructions"),
+        btn_frame_gpt = ttk.Frame(section_gpt)
+        btn_frame_gpt.pack(fill=tk.X)
+
+        self.btn_copy_instructions = ttk.Button(btn_frame_gpt, text=self.get_text("btn_copy_instructions"),
                                                  command=self.copy_instructions)
-        self.btn_copy_instructions.pack(anchor=tk.W)
+        self.btn_copy_instructions.pack(side=tk.LEFT, padx=(0, 5))
         self.ui_elements["btn_copy_instructions"] = self.btn_copy_instructions
+
+        self.btn_copy_claudemd_rule = ttk.Button(btn_frame_gpt, text=self.get_text("btn_copy_claudemd_rule"),
+                                                  command=self.copy_claudemd_rule)
+        self.btn_copy_claudemd_rule.pack(side=tk.LEFT)
+        self.ui_elements["btn_copy_claudemd_rule"] = self.btn_copy_claudemd_rule
 
     def _create_section_config(self):
         """設定ファイル編集 セクションを構築"""
@@ -762,6 +787,7 @@ class BridgironApp:
 
         # ChatGPT設定 セクション
         self.btn_copy_instructions.config(text=self.get_text("btn_copy_instructions"))
+        self.btn_copy_claudemd_rule.config(text=self.get_text("btn_copy_claudemd_rule"))
 
         # ヘルプ セクション
         self.first_run_label.config(text=self.get_text("first_run_message"))
@@ -809,6 +835,12 @@ class BridgironApp:
         """カスタム指示文をクリップボードにコピー"""
         self.root.clipboard_clear()
         self.root.clipboard_append(CUSTOM_INSTRUCTIONS)
+        self.show_notification(self.get_text("msg_copied"))
+
+    def copy_claudemd_rule(self):
+        """CLAUDE.MD用SOR/EORルールをクリップボードにコピー"""
+        self.root.clipboard_clear()
+        self.root.clipboard_append(CLAUDEMD_SOR_EOR_RULE)
         self.show_notification(self.get_text("msg_copied"))
 
     def browse_project_path(self):

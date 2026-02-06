@@ -1,5 +1,6 @@
+![Bridgiron Banner](images/Banner02.png)
 # Bridgiron
-
+Designed for developers running long spec→implement loops between ChatGPT and Claude Code under token limits.
 A Windows tool that minimizes copy-paste effort between ChatGPT and Claude Code.
 
 [日本語版 README](README_ja.md)

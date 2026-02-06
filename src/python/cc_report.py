@@ -57,24 +57,25 @@ def find_session_logs_by_mtime(log_dir):
     return sorted(jsonl_files, key=lambda f: f.stat().st_mtime, reverse=True)
 
 
-def extract_latest_assistant_message(jsonl_path):
+def _collect_recent_assistant_texts(jsonl_path, count=5):
     """
-    JSONL ログファイルから assistant の最新メッセージを抽出
+    JSONL ログファイルから直近N件の assistant テキストを取得
 
     Args:
         jsonl_path: .jsonl ファイルのパス
+        count: 取得件数
 
     Returns:
-        str: assistant の最新メッセージ（見つからない場合は None）
+        list[str]: assistant テキストのリスト（古い順）
     """
     if not jsonl_path or not jsonl_path.exists():
-        return None
+        return []
 
     try:
         with open(jsonl_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
 
-        # 末尾から逆順に検索
+        texts = []
         for line in reversed(lines):
             line = line.strip()
             if not line:
@@ -93,12 +94,50 @@ def extract_latest_assistant_message(jsonl_path):
                     if isinstance(item, dict) and item.get("type") == "text":
                         text = item.get("text", "")
                         if text:
-                            return text  # 最新の text をそのまま返す
+                            texts.append(text)
+                            break
 
-        return None
+                if len(texts) >= count:
+                    break
+
+        # 古い順に戻す
+        texts.reverse()
+        return texts
 
     except Exception:
+        return []
+
+
+def extract_latest_assistant_message(jsonl_path):
+    """
+    JSONL ログファイルから assistant の最新メッセージを抽出
+    SOR/EORマーカーがあればマーカー間の本文を返し、なければ最新1件を返す
+
+    Args:
+        jsonl_path: .jsonl ファイルのパス
+
+    Returns:
+        str: assistant の最新メッセージ（見つからない場合は None）
+    """
+    recent_messages = _collect_recent_assistant_texts(jsonl_path, count=5)
+    if not recent_messages:
         return None
+
+    # SOR/EOR検索（直近5件のメッセージを結合して検索）
+    combined_text = "\n".join(recent_messages)
+    sor_marker = "---SOR---"
+    eor_marker = "---EOR---"
+
+    sor_pos = combined_text.rfind(sor_marker)
+    eor_pos = combined_text.rfind(eor_marker)
+
+    if sor_pos != -1 and eor_pos != -1 and sor_pos < eor_pos:
+        # マーカー間を抽出（マーカー行自体は除去）
+        content = combined_text[sor_pos + len(sor_marker):eor_pos]
+        return content.strip()
+
+    # フォールバック：従来方式（最新1件）
+    return recent_messages[-1]
 
 
 def format_report_text(raw_text):
